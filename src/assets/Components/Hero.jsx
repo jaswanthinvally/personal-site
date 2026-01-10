@@ -33,7 +33,7 @@ const Hero = () => {
       <div className='mt-4 sm:mt-0'>
         <img
           className='h-60 rounded-md hover:scale-105 transition-transform duration-200 relative z-10 sm:h-40'
-          src='https://media.licdn.com/dms/image/v2/D5603AQG5WQnoirxytQ/profile-displayphoto-crop_800_800/B56Zj2enf0G4AQ-/0/1756481878640?e=1759363200&v=beta&t=YwTfILNnnSqvgh9iq0SSmcXO0n0hfrhcy4vt98vy744'
+          src='https://pbs.twimg.com/profile_images/1961454395281051648/bKAXAb0v_400x400.jpg'
           alt='Profile'
         />
                 <button className='bg-sky-950 opacity-90 text-sky-500 p-3 lg:p-2 rounded-md mx-3 lg:mx-0 lg:me-2 my-4 font-poppins '>Resume</button>
