@@ -18,7 +18,7 @@ const SHARE_HINT =
   'The Notion token works, but the "my website" integration cannot see your projects database. In Notion, open the database → ••• → Connections → Connect to → my website. Then paste the database ID from the Notion URL into DATABASE_ID (the 32-character id in the URL, not the integration id).'
 
 function getCredentials(env) {
-  const token = envValue(env, 'ACCESS_TOKEN', 'NOTION_TOKEN', 'NOTION_API_KEY')
+  const token = envValue(env, 'SECRET_TOKEN', 'ACCESS_TOKEN', 'NOTION_TOKEN', 'NOTION_API_KEY')
   const databaseId = envValue(
     env,
     'DATABASE_ID',
@@ -30,7 +30,7 @@ function getCredentials(env) {
 
   if (!token || !databaseId) {
     throw new Error(
-      'Missing Notion credentials. Set ACCESS_TOKEN and DATABASE_ID in .env'
+      'Missing Notion credentials. Set SECRET_TOKEN and DATABASE_ID in .env'
     )
   }
 

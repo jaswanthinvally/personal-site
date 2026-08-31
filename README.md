@@ -8,4 +8,6 @@ cp .env.example .env
 npm run dev
 ```
 
-Set `ACCESS_TOKEN` and `DATABASE_ID` in `.env` for the blog. On Vercel, add the same values as environment variables so `/api/posts` works in production.
+Set `SECRET_TOKEN` and `DATABASE_ID` in `.env` for local `npm run dev`.
+
+On **Netlify**: Site configuration → Environment variables → add the same two keys, then redeploy. Without them the blog section renders but posts cannot load.
