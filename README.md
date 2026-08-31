@@ -1,8 +1,11 @@
-# React + Vite
+# Jaswanth
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal site: portfolio, writing log (Notion), and contact.
 
-Currently, two official plugins are available:
+```bash
+npm install
+cp .env.example .env
+npm run dev
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Set `ACCESS_TOKEN` and `DATABASE_ID` in `.env` for the blog. On Vercel, add the same values as environment variables so `/api/posts` works in production.

@@ -1,5 +1,122 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,600;1,9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root,
+[data-theme='light'] {
+  --background: #efe6da;
+  --background-card: #f6efe5;
+  --text-heading: #1c1a17;
+  --text-accent: #b04a32;
+  --text-body: #5a5650;
+  --text-muted: #8a8177;
+  --link: #b04a32;
+  --link-hover: #8f3a26;
+  --border: #b8afa3;
+  --pill-background: #fbf7f1;
+  --pill-text: #3a3733;
+  --status-accent: #4a6b4f;
+  --code-background: #dcd5c8;
+  --button-background: #b04a32;
+  --button-text: #fbf7f1;
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --background: #0d1117;
+  --background-card: #161b22;
+  --text-heading: #f0f6fc;
+  --text-accent: #58a6ff;
+  --text-body: #e6edf3;
+  --text-muted: #8b949e;
+  --link: #58a6ff;
+  --link-hover: #79c0ff;
+  --border: #30363d;
+  --pill-background: #1f2a44;
+  --pill-text: #79c0ff;
+  --status-accent: #3fb950;
+  --code-background: #161b22;
+  --button-background: #58a6ff;
+  --button-text: #0d1117;
+  color-scheme: dark;
+}
+
+html {
+  background-color: var(--background);
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--background);
+  color: var(--text-body);
+  font-family: Inter, sans-serif;
+}
+
+::selection {
+  background: var(--text-accent);
+  color: var(--button-text);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-animate {
+    animation: fade-up 0.55s ease both;
+  }
+
+  .hero-delay-1 {
+    animation-delay: 0.08s;
+  }
+
+  .hero-delay-2 {
+    animation-delay: 0.16s;
+  }
+
+  .hero-delay-3 {
+    animation-delay: 0.24s;
+  }
+
+  .hero-delay-4 {
+    animation-delay: 0.32s;
+  }
+
+  .hero-delay-5 {
+    animation-delay: 0.4s;
+  }
+}
+
+.menu-animate {
+  animation: menu-in 0.28s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-animate,
+  .menu-animate {
+    animation: none;
+  }
+}

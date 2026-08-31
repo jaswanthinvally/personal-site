@@ -1,17 +1,33 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import Layout from '../Components/Layout'
+import PostRow from '../Components/PostRow'
+import { usePosts } from '../../hooks/usePosts'
 
 const Blog = () => {
+  const { posts, error, loading } = usePosts()
+
   return (
-    <div className=' h-screen bg-sky-950 font-poppins text-sky-500 flex justify-center items-center'>
-    <div className=' flex flex-col justify-center text-center'>
-    <h1 className="text-6xl font-bold text-sky-500">Blog</h1>
-      <p className="mt-4 text-xl text-sky-500">Blog page under developement</p>
-      <Link to="/" className="mt-6 py-2 bg-sky-500 text-white rounded hover:bg-sky-900">
-        Go Back Home
-      </Link>
-    </div>
-    </div>
+    <Layout>
+      <p className="font-mono text-xs uppercase tracking-[0.22em] text-muted">Log</p>
+      <h1 className="mt-3 font-display text-4xl font-bold text-heading sm:text-5xl">
+        Recent writing
+      </h1>
+      <p className="mt-4 max-w-xl text-copy">
+        Notes on building, algorithms, and what I am learning.
+      </p>
+
+      {loading && <p className="mt-10 font-mono text-sm text-muted">Loading notes…</p>}
+      {error && <p className="mt-10 text-sm text-accent">{error}</p>}
+      {!loading && !error && posts.length === 0 && (
+        <p className="mt-10 font-mono text-sm text-muted">No published notes yet.</p>
+      )}
+
+      <div className="mt-10">
+        {posts.map((post) => (
+          <PostRow key={post.id} post={post} />
+        ))}
+      </div>
+    </Layout>
   )
 }
 
