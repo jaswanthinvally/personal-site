@@ -1,8 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { FiArrowUpRight } from 'react-icons/fi'
+import { formatLongDate } from '../../lib/dates'
 
 export default function PostCard({ post }) {
+  const dateLabel = formatLongDate(post.publishedDate)
+
   return (
     <article className="group">
       <Link to={`/blog/${post.slug}`} className="block">
@@ -20,12 +23,20 @@ export default function PostCard({ post }) {
           )}
         </div>
       </Link>
+      {dateLabel ? (
+        <time
+          dateTime={post.publishedDate}
+          className="mt-4 block font-mono text-[11px] uppercase tracking-[0.14em] text-muted"
+        >
+          {dateLabel}
+        </time>
+      ) : null}
       {post.tags?.length ? (
-        <div className="mt-4 flex flex-wrap gap-2">
+        <div className={`${dateLabel ? 'mt-3' : 'mt-4'} flex flex-wrap gap-2`}>
           {post.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full bg-pill px-3 py-1 font-mono text-[11px] font-medium text-pill-fg"
+              className="rounded-full bg-btn px-3 py-1 font-mono text-[11px] font-medium text-btn-fg"
             >
               {tag}
             </span>

@@ -174,7 +174,10 @@ function mapPage(page) {
     featuredImage: normalizeImageUrl(
       readPlain(getProperty(properties, 'Featured Image'))
     ),
-    publishedDate: readPlain(getProperty(properties, 'Published Date')),
+    publishedDate:
+      readPlain(getProperty(properties, 'Published Date')) ||
+      readPlain(getProperty(properties, 'Date')) ||
+      (page.created_time ? page.created_time.slice(0, 10) : ''),
     slug: readPlain(getProperty(properties, 'Slug')),
     status: readPlain(getProperty(properties, 'Status')),
     tags: readTags(getProperty(properties, 'Tags')),

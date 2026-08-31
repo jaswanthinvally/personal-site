@@ -1,10 +1,18 @@
-export function formatLogDate(value) {
+function parseDate(value) {
   if (!value) {
-    return ''
+    return null
   }
-  const date = new Date(`${value}T00:00:00`)
+  const date = value.includes('T') ? new Date(value) : new Date(`${value}T00:00:00`)
   if (Number.isNaN(date.getTime())) {
-    return value
+    return null
+  }
+  return date
+}
+
+export function formatLogDate(value) {
+  const date = parseDate(value)
+  if (!date) {
+    return value || ''
   }
   const year = date.getFullYear()
   const month = String(date.getMonth() + 1).padStart(2, '0')
@@ -13,10 +21,11 @@ export function formatLogDate(value) {
 }
 
 export function formatLongDate(value) {
-  if (!value) {
+  const date = parseDate(value)
+  if (!date) {
     return ''
   }
-  return new Date(`${value}T00:00:00`).toLocaleDateString('en-US', {
+  return date.toLocaleDateString('en-US', {
     month: 'long',
     day: 'numeric',
     year: 'numeric',

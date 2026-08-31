@@ -52,7 +52,14 @@ const BlogPost = () => {
 
         {post && (
           <>
-            <p className="mt-8 font-mono text-xs text-muted">{formatLongDate(post.publishedDate)}</p>
+            {formatLongDate(post.publishedDate) ? (
+              <time
+                dateTime={post.publishedDate}
+                className="mt-8 block font-mono text-xs uppercase tracking-[0.18em] text-muted"
+              >
+                {formatLongDate(post.publishedDate)}
+              </time>
+            ) : null}
             <h1 className="mt-3 font-display text-4xl font-bold text-heading md:text-5xl">
               {post.title}
             </h1>
@@ -61,7 +68,7 @@ const BlogPost = () => {
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full bg-pill px-3 py-1 font-mono text-[11px] text-pill-fg"
+                    className="rounded-full bg-btn px-3 py-1 font-mono text-[11px] font-medium text-btn-fg"
                   >
                     {tag}
                   </span>
